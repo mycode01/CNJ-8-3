@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.client.RestTemplate
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api") /* 일반적인 RestClient 사용 */
 class RestTemplateGreetingsClientApiGateway {
 
     @Autowired
@@ -36,7 +36,7 @@ inline fun <reified T: Any> typeRef(): ParameterizedTypeReference<T> = object: P
 @Configuration
 class ForGodSake{
     @Bean
-    @LoadBalanced
+    @LoadBalanced /* 로드밸런싱을 위한 어노테이션 */
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate {
         return builder.build()
     }
